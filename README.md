@@ -6,6 +6,7 @@
 
 - [Introduction](#introduction)
 - [Project Requirements](#project-requirements)
+- [Built-in Commands](#built-in-commands)
 
 ## Introduction
 
@@ -13,14 +14,16 @@
 
 ## Project Requirements
 
-Display a prompt while waiting for user input.
-Execute commands by searching the right executable using the PATH environment variable or absolute/relative paths.
-Handle:
-
-    Redirections (<, >, >>, <<).
-    Piping between commands (|).
-    Environment variables.
-    History of executed commands.
+-    Display a prompt while waiting for user input.
+-    Execute commands by searching the right executable using the PATH environment variable or absolute/relative paths.
+-    Handle:
+    
+    0.0)Redirections (<, >, >>, <<).
+    0.1)Piping between commands (|).
+    0.2)Environment variables.
+    0.3)History of executed commands.
 
 Custom signal handling (e.g., ctrl-C, ctrl-D, ctrl-\).
 Robust memory management (except for readline() memory leaks).
+
+## Built-in Commands
