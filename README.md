@@ -27,3 +27,13 @@ Custom signal handling (e.g., ctrl-C, ctrl-D, ctrl-\).
 Robust memory management (except for readline() memory leaks).
 
 ## Built-in Commands
+
+The shell includes the following built-in commands:
+
+    echo [-n]: Display a line of text.
+    cd [directory]: Change the current directory.
+    pwd: Print the current working directory.
+    export: Set environment variables.
+    unset: Remove environment variables.
+    env: Display the environment variables.
+    exit: Exit the shell.
