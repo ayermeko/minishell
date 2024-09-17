@@ -4,13 +4,23 @@
 
 ## Table of Contents
 
-- [Features](#features)
-- [Built-in Commands](#built-in-commands)
-- [Redirections and Pipes](#redirections-and-pipes)
-- [Environment Variables](#environment-variables)
-- [Signal Handling](#signal-handling)
-- [Installation](#installation)
-- [Usage](#usage)
+- [Introduction](#introduction)
 - [Project Requirements](#project-requirements)
-- [Contributing](#contributing)
-- [License](#license)
+
+## Introduction
+
+..
+
+## Project Requirements
+
+Display a prompt while waiting for user input.
+Execute commands by searching the right executable using the PATH environment variable or absolute/relative paths.
+Handle:
+
+    Redirections (<, >, >>, <<).
+    Piping between commands (|).
+    Environment variables.
+    History of executed commands.
+
+Custom signal handling (e.g., ctrl-C, ctrl-D, ctrl-\).
+Robust memory management (except for readline() memory leaks).
