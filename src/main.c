@@ -1,32 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/18 18:31:46 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/17 16:09:41 by ayermeko         ###   ########.fr       */
+/*   Created: 2024/09/16 20:47:37 by ayermeko          #+#    #+#             */
+/*   Updated: 2024/09/16 20:53:03 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+# include "../include/minishell.h"
 
-void	ft_lstadd_back(t_env **lst, t_env *new)
+int main(void)
 {
-	t_env	*current;
+	extern char **environ;
 
-	if (!lst || !new)
-		return ;
-	if (*lst == NULL)
-	{
-		*lst = new;
-		return ;
-	}
-	current = *lst;
-	while (current->next != NULL)
-	{
-		current = current->next;
-	}
-	current->next = new;
+	return (minishell(init_minienv(environ)));
 }
