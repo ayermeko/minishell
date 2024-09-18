@@ -1,6 +1,5 @@
-# MINISHELL
 
-<img src="https://media.licdn.com/dms/image/v2/D5605AQF4p3RRu85y2Q/feedshare-thumbnail_720_1280/feedshare-thumbnail_720_1280/0/1701954290874?e=2147483647&v=beta&t=KZT3ggeH_XFDeUNnvCzm9uMBCm8_GTJ9AURlmvbnKsY" alt="drawing" width="500"/>
+<img src="https://media.licdn.com/dms/image/v2/D5605AQF4p3RRu85y2Q/feedshare-thumbnail_720_1280/feedshare-thumbnail_720_1280/0/1701954290874?e=2147483647&v=beta&t=KZT3ggeH_XFDeUNnvCzm9uMBCm8_GTJ9AURlmvbnKsY" alt="drawing" width="900"/>
 
 __Minishell__ is a my first team project in 42 that mimics the behavior of bash. This project aiming to deepen your understanding of system calls, process management, and signal handling in C.
 
