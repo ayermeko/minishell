@@ -27,6 +27,4 @@ char	*minienv_value(char *name, t_env *minienv);
 void	minienv_add(char *key_pair, t_env **minienv);
 t_env	*init_minienv(char **environ);
 
-// minishell.c
-
 #endif
