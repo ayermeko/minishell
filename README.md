@@ -1,6 +1,6 @@
 # MINISHELL
 
-> __Minishell__ is a team project that mimics the behavior of bash. This project is part of the 42 curriculum, aiming to deepen your understanding of system calls, process management, and signal handling in C.
+> __Minishell__ is a my first team project in 42 that mimics the behavior of bash. This project aiming to deepen your understanding of system calls, process management, and signal handling in C.
 
 ## Table of Contents
 
