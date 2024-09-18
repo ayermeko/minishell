@@ -19,6 +19,14 @@ typedef struct s_env
 	struct s_env	*next;
 }	t_env;
 
+// init_minienv.c
+
+t_env	*minienv_node(char *name, t_env *minienv);
+char	*value_only(char *key_pair);
+char	*minienv_value(char *name, t_env *minienv);
+void	minienv_add(char *key_pair, t_env **minienv);
 t_env	*init_minienv(char **environ);
+
+// minishell.c
 
 #endif
