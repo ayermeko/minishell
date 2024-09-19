@@ -38,3 +38,28 @@ The shell includes the following built-in commands:
     unset: Remove environment variables.
     env: Display the environment variables.
     exit: Exit the shell.
+
+## External functs.
+
+readline, rl_clear_history, rl_on_new_line,
+rl_replace_line, rl_redisplay, add_history,
+printf, malloc, free, write, access, open, read,
+close, fork, wait, waitpid, wait3, wait4, signal,
+sigaction, sigemptyset, sigaddset, kill, exit,
+getcwd, chdir, stat, lstat, fstat, unlink, execve,
+dup, dup2, pipe, opendir, readdir, closedir,
+strerror, perror, isatty, ttyname, ttyslot, ioctl,
+getenv, tcsetattr, tcgetattr, tgetent, tgetflag,
+tgetnum, tgetstr, tgoto, tputs
+
+__Let's break down the each function.__
+
+void rl_clear_history(void) - clears the entire command history list, freeing all memory associated with the stored commands. This function removes all entries from the history list that the user has entered during the current session.
+
+int rl_on_new_line(void) - is used to manage the display of the command line prompt when interacting with users in a terminal. It prepares the Readline library to handle a new input line after some output has been written to the terminal, ensuring the prompt is correctly positioned.
+
+int access(const char *pathname, int mode) - function is used to check the accessibility of a file (or a path) for certain types of operations. It checks whether the calling process has permission to read, write, or execute a specified file, or simply if the file exists.
+
+pid_t fork(void) - for creating a child process, where they have different memory spaces, instead of a threads. 
+
+

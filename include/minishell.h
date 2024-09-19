@@ -1,6 +1,8 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+# define PATH_MAX	4096
+
 # include <stdio.h> // perror
 # include <readline/readline.h> // readline
 # include <readline/history.h> // history
@@ -26,5 +28,9 @@ char	*value_only(char *key_pair);
 char	*minienv_value(char *name, t_env *minienv);
 void	minienv_add(char *key_pair, t_env **minienv);
 t_env	*init_minienv(char **environ);
+
+// signal_handler.c
+
+void	signal_handler(void);
 
 #endif
