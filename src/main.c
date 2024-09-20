@@ -6,7 +6,7 @@
 /*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 20:47:37 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/20 14:19:12 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/20 20:20:48 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	minishell(t_env *minienv)
 	while (1)
 	{
 		signal_handler();
-		input = trim_spaces(prompt_input(minienv));
+		input = free_spaces(prompt_input(minienv));
 		if (input_error(input, &exit_status, minienv))
 			continue ;
 	}
@@ -47,3 +47,5 @@ int main(void)
 
 	return (minishell(init_minienv(environ)));
 }
+
+// niceily sorted file.

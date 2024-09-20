@@ -6,7 +6,7 @@
 /*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 20:58:33 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/20 17:07:52 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/20 20:12:20 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,3 +79,6 @@ t_env	*init_minienv(char **environ)
 		minienv_add("OLDPWD", &minienv);
 	return (minienv);
 }
+
+//niceily sorted file.
+//Done
