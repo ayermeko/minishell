@@ -6,18 +6,11 @@
 /*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 20:22:27 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/20 21:45:07 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/20 21:48:30 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
-
-int	pipe_start(char *input)
-{
-	if (*input == '|')
-		return (syntax_error("|"));
-	return (FALSE);
-}
 
 void	check_av_error(char **av)
 {

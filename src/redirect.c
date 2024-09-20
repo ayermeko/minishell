@@ -6,7 +6,7 @@
 /*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 20:17:22 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/20 21:29:19 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/20 21:52:39 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,16 @@ char	*get_rposition(char *str)
 		str++;
 	}
 	return (str);
+}
+
+int	unexpected_token(char *input)
+{
+	if (input[0] == '<' && input[1] == '<')
+		return (syntax_error("<<"));
+	else if (input[0] == '>' && input[1] == '>')
+		return (syntax_error(">>"));
+	input[1] = '\0';
+	return (syntax_error(input));
 }
 
 int	redirect_error(char *input)
