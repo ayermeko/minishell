@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ayermeko <ayermko@student.42prague.com>    +#+  +:+       +#+         #
+#    By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/18 18:33:28 by ayermeko          #+#    #+#              #
-#    Updated: 2023/11/18 18:33:30 by ayermeko         ###   ########.fr        #
+#    Updated: 2024/09/20 16:32:55 by ayermeko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,16 +55,16 @@ BONUS_SRC = ft_lstnew \
 	ft_lstadd_back \
 	ft_lstdelone \
 	ft_lstclear \
-	ft_lstiter \
-	ft_lstmap  
+	ft_lstiter  
 
 SRCS = $(addsuffix .c, $(SRC))
 OBJS = $(addsuffix .o, $(SRC))
 BONUS_SRCS = $(addsuffix .c, $(BONUS_SRC))
 BONUS_OBJS = $(addsuffix .o, $(BONUS_SRC))
 
-.c.o: $(SRCS) $(BONUS_SRCS)
-	$(CC) $(CFLAGS) -c -o $@ $<
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
 	$(AR) $@ $^

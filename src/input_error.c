@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   input_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/18 18:32:00 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/20 15:44:03 by ayermeko         ###   ########.fr       */
+/*   Created: 2024/09/20 13:28:00 by ayermeko          #+#    #+#             */
+/*   Updated: 2024/09/20 14:18:03 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/minishell.h"
 
-void	ft_lstclear(t_env **minienv)
+int	unclosed_quotes(char *input)
 {
-	t_env	*line;
-	t_env	*next;
+	(void)input;
+	return (0);
+}
 
-	line = *minienv;
-	while (line)
-	{
-		free(line->key_pair);
-		next = line->next;
-		free(line);
-		line = next;
-	}
+int	input_error(char *input, int *exit_status, t_env *minienv)
+{
+	(void)exit_status;
+	(void)minienv;
+	if (!*input || unclosed_quotes(input))
+		return (free(input), TRUE);
+	return (FALSE);
 }

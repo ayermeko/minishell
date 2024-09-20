@@ -2,6 +2,8 @@
 # define MINISHELL_H
 
 # define PATH_MAX	4096
+# define TRUE 1
+# define FALSE 0
 
 # include <stdio.h> // perror
 # include <readline/readline.h> // readline
@@ -32,5 +34,18 @@ t_env	*init_minienv(char **environ);
 // signal_handler.c
 
 void	signal_handler(void);
+
+// trim_spaces.c
+
+char	*trim_spaces(char *input);
+char	*trim_spaces_no_free(char	*input);
+
+// input_error.c
+
+int		input_error(char *input, int *exit_status, t_env *minienv);
+
+// builit_exit.c
+
+void	builtin_exit(char **av, t_env **minienv);
 
 #endif

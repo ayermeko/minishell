@@ -1,22 +1,13 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/09/16 18:53:14 by ayermeko          #+#    #+#              #
-#    Updated: 2024/09/16 18:56:24 by ayermeko         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = minishell
-CFLAGS = -Wall -Wextra - Werror
-SRCS = ...
-OBJS = ...
-OBJ_DIR = ...
-
-LIBFT_PATH	= ../extra_libs/Libft/libft.a
+CFLAGS = -Wall -Wextra -Werror 
+SRCS = init_minienv.c signal_handler.c input_error.c trim_spaces.c main.c builtin_exit.c
+OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
+OBJ_DIR = obj
+LDLIBS	= -lreadline -lft
+LDFLAGS	= -L./extra_libs/Libft
+VPATH = src/
+LIBFT_A	= extra_libs/Libft//libft.a
+LIBFT_PATH	= extra_libs/Libft/
 
 all: $(NAME)
 
@@ -28,7 +19,7 @@ $(NAME): $(LIBFT_A) $(OBJ_DIR) $(OBJS)
 	@echo $(NAME) done
 
 $(LIBFT_A):
-	make -C libft
+	make bonus -C  $(LIBFT_PATH)
 
 $(OBJ_DIR):
 	@mkdir -p $@
@@ -42,7 +33,7 @@ clean:
 
 fclean: clean
 	@rm -rf $(NAME)
-	@make fclean -C libft
+	@make fclean -C $(LIBFT_PATH)
 	@echo removed $(NAME)
 
 re: fclean all
