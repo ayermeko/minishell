@@ -6,7 +6,7 @@
 /*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 20:58:33 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/18 14:53:50 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/20 17:07:52 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,6 @@ t_env	*minienv_node(char *name, t_env *minienv)
 	return (NULL);
 }
 
-//Return value of *key_pair
-// char	*value_only(char *key_pair)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (key_pair[i] != '=' && key_pair[i])
-// 		i++;
-// 	if (!key_pair[i])
-// 		return (NULL);
-// 	return (&key_pair[i + 1]);
-// }
-
 char *value_only(char *key_pair)
 {
     char *equal_sign;
@@ -52,7 +39,6 @@ char *value_only(char *key_pair)
     return (equal_sign + 1);
 }
 
-//Return value of *name
 char	*minienv_value(char *name, t_env *minienv)
 {
 	t_env	*aux;
@@ -78,9 +64,6 @@ void	minienv_add(char *key_pair, t_env **minienv)
 	}
 	aux_node = *minienv;
 	ft_lstadd_back(&aux_node, new_node);
-	// while (aux_node->next != NULL)
-	//  	aux_node = aux_node->next;
-	// aux_node->next = new_node;
 }
 
 t_env	*init_minienv(char **environ)

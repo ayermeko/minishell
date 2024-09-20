@@ -6,7 +6,7 @@
 /*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 14:18:40 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/19 19:58:34 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/20 18:15:20 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,3 +35,5 @@ void	signal_handler(void)
 	sigemptyset(&sa_sigquit.sa_mask);
 	sigaction(SIGQUIT, &sa_sigquit, NULL);
 }
+
+// DONE

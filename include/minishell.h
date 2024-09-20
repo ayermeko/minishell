@@ -39,6 +39,7 @@ void	signal_handler(void);
 
 char	*trim_spaces(char *input);
 char	*trim_spaces_no_free(char	*input);
+void	free_array(char **av);
 
 // input_error.c
 
