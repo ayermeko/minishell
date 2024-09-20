@@ -1,6 +1,6 @@
 NAME = minishell
 CFLAGS = -Wall -Wextra -Werror 
-SRCS = init_minienv.c signal_handler.c input_error.c trim_spaces.c main.c builtin_exit.c
+SRCS = error_msg.c free_utils.c init_minienv.c main.c signal_handler.c utils.c
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 OBJ_DIR = obj
 LDLIBS	= -lreadline -lft
