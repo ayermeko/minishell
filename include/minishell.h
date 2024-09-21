@@ -26,13 +26,29 @@ typedef struct s_env
 
 // error_msg.c
 
-int		syntax_error(char *msg);
+int		syntax_error(char *token);
+void	print_perror_msg(char *command, char *perror_msg);
 
 // free_utils.c
 
 char	*free_spaces(char *input);
 void	free_array(char **av);
 int		builtin_exit(char **av, t_env **minienv);
+
+// heredoc_exec.c
+
+void	insert_string(char **input, char *var_value, char *rest_str);
+char	*var_position(char *s);
+void	expand_heredoc(char **input, int exit_status, t_env *minienv);
+void	read_heredoc(int *exit_status, t_env *minienv, char *delimiter);
+
+// heredoc_handler.c
+
+int		delimiter_len(char *s);
+char	*get_delimiter(char *delim_pos);
+char	*get_heredoc_pos(char *str);	
+int		exec_heredoc(char *delimiter, int *exit_status, t_env *minienv, char *input);
+int		heredoc_handler(char *input, int *exit_status, t_env *minienv);
 
 // init_minienv.c
 
@@ -49,11 +65,6 @@ int		unclosed_quotes(char *input);
 char	*trim_spaces_no_free(char	*input);
 int		input_error(char *input, int *exit_status, t_env *minienv);
 
-// main.c
-
-char	*prompt_input(t_env *minienv);
-int		minishell(t_env *minienv);
-
 // pipe.c
 
 int		pipe_start(char *input);
@@ -68,11 +79,14 @@ int		redirect_error(char *input);
 
 // signal_handler.c
 
+int		handle_signal_interrupt(int status, int is_last_child);
+int		wait_for_child(int child_pid, int is_last_child);
+void	define_heredoc_signals(int child_pid);
 void	signal_handler(void);
 
 // utils.c
 
+void	delete_char(char *str, int len);
 void	check_av_error(char **av);
-
 
 #endif

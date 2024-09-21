@@ -6,11 +6,16 @@
 /*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 20:22:27 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/20 21:48:30 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/21 17:24:33 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
+
+void	delete_char(char *str, int len)
+{
+	ft_memmove(str, str + len, ft_strlen(str + len) + 1);
+}
 
 void	check_av_error(char **av)
 {
