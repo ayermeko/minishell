@@ -55,6 +55,11 @@ void		exit_with_error(char *command, char *msg, int error);
 
 void	expand_input(char **input, t_env *minienv, int exit_status);
 
+// fd_handler.c
+
+void	close_extra_fds(void);
+void	close_all_fds(void);
+
 // free_utils.c
 
 char		*free_spaces(char *input);
@@ -115,8 +120,7 @@ void		signal_handler(void);
 
 void		delete_char(char *str, int len);
 void		check_av_error(char **av);
-void		close_extra_fds(void);
-void		close_all_fds(void);
 long long	ft_atoll(const char *str);
+int			one_command(char *input, t_env **minienv);
 
 #endif
