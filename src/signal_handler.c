@@ -6,7 +6,7 @@
 /*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 14:18:40 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/22 12:59:48 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/22 15:01:59 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	signal_handler(void)
 	struct sigaction	sa_sigquit;
 	
 	sa_sigint.sa_handler = &handle_sigint;
+	sa_sigint.sa_flags = 0;
 	sigemptyset(&sa_sigint.sa_mask);
 	sigaction(SIGINT, &sa_sigint, NULL);
 	sa_sigquit.sa_handler = SIG_IGN;

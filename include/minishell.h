@@ -51,6 +51,10 @@ void		print_perror_msg(char *command, char *perror_msg);
 void		print_error_msg(char *command, char *msg);
 void		exit_with_error(char *command, char *msg, int error);
 
+// expand_input.c
+
+void	expand_input(char **input, t_env *minienv, int exit_status);
+
 // free_utils.c
 
 char		*free_spaces(char *input);
