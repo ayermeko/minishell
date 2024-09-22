@@ -58,7 +58,6 @@ void	expand_input(char **input, t_env *minienv, int exit_status);
 
 // fd_handler.c
 
-void	close_extra_fds(void);
 void	close_all_fds(void);
 
 // free_utils.c
