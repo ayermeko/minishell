@@ -70,7 +70,6 @@ int			builtin_exit(char **av, t_env **minienv);
 
 void		insert_string(char **input, char *var_value, char *rest_str);
 char		*var_position(char *s);
-void		expand_heredoc(char **input, int exit_status, t_env *minienv);
 void		read_heredoc(int *exit_status, t_env *minienv, char *delimiter);
 
 // heredoc_handler.c
