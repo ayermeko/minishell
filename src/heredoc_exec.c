@@ -59,7 +59,7 @@ char	*var_position(char *s)
 }
 
 //Expand $variabels and $? in input
-void	expand_heredoc(char **input, int exit_status, t_env *minienv)
+static void	expand_heredoc(char **input, int exit_status, t_env *minienv)
 {
 	char	*var_pos;
 	char	*var_value;
