@@ -12,7 +12,7 @@
 
 #include "../include/minishell.h"
 
-void	close_extra_fds(void)
+static void	close_extra_fds(void)
 {
 	int	last_open_fd;
 
