@@ -6,7 +6,7 @@
 /*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 19:03:50 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/21 19:19:36 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/22 13:46:54 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	read_heredoc(int *exit_status, t_env *minienv, char *delimiter)
 	free(input);
 	close(tmp_file_fd);
 	free(delimiter);
-	free_minienv(&minienv);
+	ft_lstclear(&minienv);
 	rl_clear_history();
 	exit(EXIT_SUCCESS);
 }

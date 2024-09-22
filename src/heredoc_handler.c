@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   heredoc.c                                          :+:      :+:    :+:   */
+/*   heredoc_handler.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 15:58:43 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/21 17:25:05 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/22 13:48:50 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	*get_heredoc_pos(char *str)
 	while (*str)
 	{
 		if (*str == '\'' || *str == '"')
-			skip_quotes(&str);
+			str = skip_quotes(str);
 		if (*str == '<' && *(str + 1) == '<')
 			return (str);
 		str++;
