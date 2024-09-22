@@ -53,6 +53,7 @@ void		exit_with_error(char *command, char *msg, int error);
 
 // expand_input.c
 
+void	expand_variables(char **input, t_env *minienv);
 void	expand_input(char **input, t_env *minienv, int exit_status);
 
 // fd_handler.c
