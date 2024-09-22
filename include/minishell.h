@@ -93,6 +93,7 @@ int			input_error(char *input, int *exit_status, t_env *minienv);
 
 // pipe.c
 
+int			has_pipe(char *str);
 int			pipe_start(char *input);
 char		*get_next_pipe(char *str);
 int			empty_pipe(char *input);

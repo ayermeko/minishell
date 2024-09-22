@@ -6,11 +6,23 @@
 /*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 21:47:41 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/20 22:29:45 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/22 19:32:02 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
+
+int	has_pipe(char *str)
+{
+	while (*str)
+	{
+		str = skip_quotes(str);
+		if (*str == '|')
+			return (TRUE);
+		str++;
+	}
+	return (FALSE);
+}
 
 int	pipe_start(char *input)
 {

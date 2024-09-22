@@ -6,7 +6,7 @@
 /*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 20:47:37 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/22 19:21:14 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/22 19:41:03 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ static int	minishell(t_env *minienv)
 		if (input_error(input, &exit_status, minienv))
 			continue ;
 		expand_input(&input, minienv, exit_status);
+		if (has_pipe(input) == FALSE)
+			exit_status = one_command(input, &minienv);
 	}
 	return (0);
 }
