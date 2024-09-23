@@ -6,7 +6,7 @@
 /*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 19:03:50 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/23 17:25:58 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/23 17:32:37 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char	*var_position(char *s)
 }
 
 //Expand $variabels and $? in input
-static void	expand_heredoc(char **input, int exit_status, t_env *minienv)
+void	expand_heredoc(char **input, int exit_status, t_env *minienv)
 {
 	char	*var_pos;
 	char	*var_value;
