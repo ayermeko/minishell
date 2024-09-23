@@ -6,11 +6,17 @@
 /*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 21:27:34 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/23 21:52:45 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/23 22:40:42 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
+
+void	redirect_fd(int fd_to_redirect, int fd_location)
+{
+	dup2(fd_to_redirect, fd_location);
+	close(fd_to_redirect);
+}
 
 void	save_original_fd_in(int original_fds[2], int fd_index)
 {
@@ -31,7 +37,7 @@ int	redirect_input(char *input)
 	fd = open(file_name, O_RDONLY, FD_CLOEXEC);
 	if (fd == -1)
 	{
-		print_perror_msg("filename does not accessible.", file_name);
+		print_perror_msg("filename - input is not accessible.", file_name);
 		free(file_name);
 		return (FAILED);
 	}
@@ -41,18 +47,6 @@ int	redirect_input(char *input)
 	return (SUCCESS);
 }
 
-int	handle_input(char *input, int original_fds[2])
-{
-	save_original_fd_in(original_fds, 0);
-	if (redirect_input(input) == FAILED)
-	{
-		redirect_fd(original_fds[0], 0);
-		return (FAILED);
-	}
-	return (SUCCESS);
-}
-
-
 int	redirect_output(char *command)
 {
 	char	*output_redirect;
@@ -60,7 +54,7 @@ int	redirect_output(char *command)
 	int		fd;
 	int		open_flags;
 
-	output_redirect = get_redirect_position(command, '>');
+	output_redirect = get_spos(command, ">");
 	if (!*output_redirect)
 		return (SUCCESS);
 	if (output_redirect[1] == '>')
@@ -71,7 +65,7 @@ int	redirect_output(char *command)
 	fd = open(file_name, open_flags, 0644);
 	if (fd == -1)
 	{
-		print_perror_msg("open", file_name);
+		print_perror_msg("filename - output is not accessible.", file_name);
 		free(file_name);
 		return (FAILED);
 	}
@@ -81,12 +75,17 @@ int	redirect_output(char *command)
 	return (SUCCESS);
 }
 
-int	handle_output(char *command, int original_fds[2])
+int	handle_io(char *command, int original_fds[2], int fd_type)
 {
-	save_original_fd_out(original_fds, 1);
-	if (redirect_output(command) == FAILED)
+	save_original_fd(original_fds, fd_type);
+	if (redirect_output(command) == FAILED && fd_type == 1)
 	{
-		redirect_fd(original_fds[1], 1);
+		redirect_fd(original_fds[fd_type], fd_type);
+		return (FAILED);
+	}
+	else if (redirect_input(command) == FAILED && fd_type == 0)
+	{
+		redirect_fd(original_fds[fd_type], fd_type);
 		return (FAILED);
 	}
 	return (SUCCESS);

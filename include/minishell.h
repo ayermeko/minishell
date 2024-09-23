@@ -109,13 +109,12 @@ int			empty_pipe(char *input);
 
 void		save_original_fd_in(int original_fds[2], int fd_index);
 int			redirect_input(char *input);
-int			handle_input(char *input, int original_fds[2]);
 int			redirect_output(char *command);
-int			handle_output(char *command, int original_fds[2]);
+int			handle_io(char *command, int original_fds[2], int fd_type);
 
 // redirect.c
 
-char 		*get_spos(char *str, const char *chars_to_find)
+char 		*get_spos(char *str, const char *chars_to_find);
 int			unexpected_token(char *input);
 int			redirect_error(char *input);
 int			handle_redirects(char *input, int original_fds[2]);
