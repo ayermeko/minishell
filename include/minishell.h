@@ -46,24 +46,24 @@ typedef struct s_env
 
 // error_msg.c
 
-int		syntax_error(char *token);
-void	print_perror_msg(char *command, char *perror_msg);
-void	print_error_msg(char *command, char *msg);
-void	exit_with_error(char *command, char *msg, int error);
+int			syntax_error(char *token);
+void		print_perror_msg(char *command, char *perror_msg);
+void		print_error_msg(char *command, char *msg);
+void		exit_with_error(char *command, char *msg, int error);
 
 // expand_input.c
 
-void	expand_input(char **input, t_env *minienv, int exit_status);
+void		expand_input(char **input, t_env *minienv, int exit_status);
 
 // fd_handler.c
 
-void	close_all_fds(void);
+void		close_all_fds(void);
 
 // free_utils.c
 
-char	*free_spaces(char *input);
-void	free_array(char **av);
-int		builtin_exit(char **av, t_env **minienv);
+char		*free_spaces(char *input);
+void		free_array(char **av);
+int			builtin_exit(char **av, t_env **minienv);
 
 // heredoc_exec.c
 
@@ -74,52 +74,52 @@ void		read_heredoc(int *exit_status, t_env *minienv, char *delimiter);
 
 // heredoc_handler.c
 
-int		delimiter_len(char *s);
-char	*get_delimiter(char *delim_pos);
-char	*get_heredoc_pos(char *str);
-int		exec_heredoc(char *delimiter, int *exit_status, t_env *minienv, char *input);
-int		heredoc_handler(char *input, int *exit_status, t_env *minienv);
+int			delimiter_len(char *s);
+char		*get_delimiter(char *delim_pos);
+char		*get_heredoc_pos(char *str);
+int			exec_heredoc(char *delimiter, int *exit_status, t_env *minienv, char *input);
+int			heredoc_handler(char *input, int *exit_status, t_env *minienv);
 
 // init_minienv.c
 
-t_env	*minienv_node(char *name, t_env *minienv);
-char 	*value_only(char *key_pair);
-char	*minienv_value(char *name, t_env *minienv);
-void	minienv_add(char *key_pair, t_env **minienv);
-t_env	*init_minienv(char **environ);
+t_env		*minienv_node(char *name, t_env *minienv);
+char 		*value_only(char *key_pair);
+char		*minienv_value(char *name, t_env *minienv);
+void		minienv_add(char *key_pair, t_env **minienv);
+t_env		*init_minienv(char **environ);
 
 // parser.c
 
-char	*skip_quotes(char *str);
-int		unclosed_quotes(char *input);
-char	*trim_spaces_no_free(char	*input);
-int		input_error(char *input, int *exit_status, t_env *minienv);
-void	check_av_error(char **av);
+char		*skip_quotes(char *str);
+int			unclosed_quotes(char *input);
+char		*trim_spaces_no_free(char	*input);
+int			input_error(char *input, int *exit_status, t_env *minienv);
+void		check_av_error(char **av);
 
 // pipe.c
 
-int		has_pipe(char *str);
-int		pipe_start(char *input);
-char	*get_next_pipe(char *str);
-int		empty_pipe(char *input);
+int			has_pipe(char *str);
+int			pipe_start(char *input);
+char		*get_next_pipe(char *str);
+int			empty_pipe(char *input);
 
 // redirect.c
 
-char	*get_rposition(char *str);
-int		unexpected_token(char *input);
-int		redirect_error(char *input);
+char		*get_rposition(char *str);
+int			unexpected_token(char *input);
+int			redirect_error(char *input);
 
 // signal_handler.c
 
-int		handle_signal_interrupt(int status, int is_last_child);
-int		wait_for_child(int child_pid, int is_last_child);
-void	define_heredoc_signals(int child_pid);
-void	signal_handler(void);
+int			handle_signal_interrupt(int status, int is_last_child);
+int			wait_for_child(int child_pid, int is_last_child);
+void		define_heredoc_signals(int child_pid);
+void		signal_handler(void);
 
 // utils.c
 
-int		fits_in_long_long(char *str);
-void	delete_char(char *str, int len);
+int			fits_in_long_long(char *str);
+void		delete_char(char *str, int len);
 long long	ft_atoll(const char *str);
 
 #endif
