@@ -107,7 +107,8 @@ int			empty_pipe(char *input);
 
 // redirect_io.c
 
-void		save_original_fd_in(int original_fds[2], int fd_index);
+void		redirect_fd(int fd_to_redirect, int fd_location);
+void		save_original_fd(int original_fds[2], int fd_index);
 int			redirect_input(char *input);
 int			redirect_output(char *command);
 int			handle_io(char *command, int original_fds[2], int fd_type);

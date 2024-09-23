@@ -6,7 +6,7 @@
 /*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 21:27:34 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/23 22:40:42 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/23 22:45:53 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	redirect_fd(int fd_to_redirect, int fd_location)
 	close(fd_to_redirect);
 }
 
-void	save_original_fd_in(int original_fds[2], int fd_index)
+void	save_original_fd(int original_fds[2], int fd_index)
 {
 	if (original_fds[fd_index] == NO_REDIRECT)
 		original_fds[fd_index] = dup(fd_index);
