@@ -53,14 +53,10 @@ void	exit_with_error(char *command, char *msg, int error);
 
 // expand_input.c
 
-char	*find_var_position(char *input);
-char	*find_exit_status_position(char *input);
-void	expand_exit_status(char **input, int exit_status);
 void	expand_input(char **input, t_env *minienv, int exit_status);
 
 // fd_handler.c
 
-void	close_extra_fds(void);
 void	close_all_fds(void);
 
 // free_utils.c
@@ -71,10 +67,10 @@ int		builtin_exit(char **av, t_env **minienv);
 
 // heredoc_exec.c
 
-void	insert_string(char **input, char *var_value, char *rest_str);
-char	*var_position(char *s);
-void	expand_heredoc(char **input, int exit_status, t_env *minienv);
-void	read_heredoc(int *exit_status, t_env *minienv, char *delimiter);
+void		insert_string(char **input, char *var_value, char *rest_str);
+char		*var_position(char *s);
+void		expand_heredoc(char **input, int exit_status, t_env *minienv);
+void		read_heredoc(int *exit_status, t_env *minienv, char *delimiter);
 
 // heredoc_handler.c
 

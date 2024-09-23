@@ -35,7 +35,7 @@ char	*find_var_position(char *input)
 	return (NULL);
 }
 
-static void	expand_variables(char **input, t_env *minienv)
+void	expand_variables(char **input, t_env *minienv)
 {
 	char	*var_position;
 	char	*var_name;
