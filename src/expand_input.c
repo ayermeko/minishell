@@ -6,13 +6,13 @@
 /*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 16:14:58 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/22 16:17:15 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/23 17:26:07 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-static char	*find_var_position(char *input)
+char	*find_var_position(char *input)
 {
 	while (*input)
 	{
@@ -59,7 +59,7 @@ static void	expand_variables(char **input, t_env *minienv)
 	}
 }
 
-static char	*find_exit_status_position(char *input)
+char	*find_exit_status_position(char *input)
 {
 	while (*input)
 	{
@@ -82,7 +82,7 @@ static char	*find_exit_status_position(char *input)
 	return (NULL);
 }
 
-static void	expand_exit_status(char **input, int exit_status)
+void	expand_exit_status(char **input, int exit_status)
 {
 	char	*exit_pos;
 	char	*exit_str;

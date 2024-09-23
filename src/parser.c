@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_handle.c                                     :+:      :+:    :+:   */
+/*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 20:47:37 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/20 22:34:47 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/23 17:13:21 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,25 @@ int	input_error(char *input, int *exit_status, t_env *minienv)
 	if (heredoc_handler(input, exit_status, minienv))
 		return (free(input), TRUE);
 	return (FALSE);
+}
+
+void	check_av_error(char **av)
+{
+	if (!av || !av[1])
+	{
+		if (av)
+			free_array(av);
+		close_all_fds();
+		exit(0);
+	}
+	if (!fits_in_long_long(av[1]))
+	{
+		free_array(av);
+		exit_with_error("exit", "numeric argument required", BUILTIN_MISUSE);
+	}
+	if (av[2] != NULL)
+	{
+		free_array(av);
+		exit_with_error("exit", "too many arguments", EXIT_FAILURE);
+	}
 }
