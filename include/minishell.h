@@ -53,6 +53,9 @@ void		exit_with_error(char *command, char *msg, int error);
 
 // expand_input.c
 
+char		*find_var_position(char *input);
+char		*find_exit_status_position(char *input);
+void		expand_exit_status(char **input, int exit_status);
 void		expand_input(char **input, t_env *minienv, int exit_status);
 
 // fd_handler.c
@@ -100,14 +103,22 @@ void		check_av_error(char **av);
 
 int			has_pipe(char *str);
 int			pipe_start(char *input);
-char		*get_next_pipe(char *str);
 int			empty_pipe(char *input);
+
+// redirect_io.c
+
+void		save_original_fd_in(int original_fds[2], int fd_index);
+int			redirect_input(char *input);
+int			handle_input(char *input, int original_fds[2]);
+int			redirect_output(char *command);
+int			handle_output(char *command, int original_fds[2]);
 
 // redirect.c
 
-char		*get_rposition(char *str);
+char 		*get_spos(char *str, const char *chars_to_find)
 int			unexpected_token(char *input);
 int			redirect_error(char *input);
+int			handle_redirects(char *input, int original_fds[2]);
 
 // signal_handler.c
 

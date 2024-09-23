@@ -6,23 +6,22 @@
 /*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 20:17:22 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/23 17:16:59 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/23 21:52:45 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-char	*get_rposition(char *str)
+char *get_spos(char *str, const char *chars_to_find)
 {
-	while (*str)
-	{
-		if (*str == '\'' || *str == '"')
-			str = skip_quotes(str);
-		if (*str == '>' || *str == '<' || *str == 1)
-			return (str);
-		str++;
-	}
-	return (str);
+    while (*str)
+    {
+        str = skip_quotes(str);
+        if (ft_strchr(chars_to_find, *str))
+            return (str);
+        str++;
+    }
+    return (NULL);
 }
 
 int	unexpected_token(char *input)
@@ -39,7 +38,7 @@ int	redirect_error(char *input)
 {
 	char	*position;
 
-	position = get_rposition(input);
+	position = get_spos(input, "><\x01");
 	if (!*position)
 		return (FALSE);
 	if (position[0] == '<' && position[1] == '<')
@@ -54,4 +53,27 @@ int	redirect_error(char *input)
 	if (*position == '|' || *position == '>' || *position == '<')
 		return (unexpected_token(position));
 	return (redirect_error(position));
+}
+
+int	handle_redirects(char *input, int original_fds[2])
+{
+	char	redirect;
+	
+	original_fds[0] = NO_REDIRECT;
+	original_fds[1] = NO_REDIRECT;
+	redirect = *get_spos(input, "><\x01");
+	while (redirect)
+	{
+		if (redirect == '<' && !handle_input(input, original_fds))
+			return (FAILED);
+		if (redirect == '>' && !handle_output(input, original_fds))
+			return (FAILED);
+		if (redirect == 1)
+		{
+			save_original_fd_in(original_fds);
+			redirect_heredoc(input);
+		}
+		redirect = *get_spos(input, "><\x01");
+	}
+	return (SUCCESS);
 }

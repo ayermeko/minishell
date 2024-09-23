@@ -6,7 +6,7 @@
 /*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 16:14:58 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/23 17:26:07 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/23 21:38:58 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*find_var_position(char *input)
 	return (NULL);
 }
 
-void	expand_variables(char **input, t_env *minienv)
+static void	expand_variables(char **input, t_env *minienv)
 {
 	char	*var_position;
 	char	*var_name;

@@ -6,11 +6,40 @@
 /*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 20:47:37 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/22 19:41:03 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/23 21:36:43 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
+
+static int	one_command(char *input, t_env **minienv)
+{
+	char	**av;
+	int		exit_status;
+	int		original_fds[2];
+
+	if (*input == 0)
+		return (free(input), 0);
+	if (!handle_redirects(input, &original_fds[0]))
+	{
+		restore_original_fds(original_fds);
+		free(input);
+		return (EXIT_FAILURE);
+	}
+	av = split_av(input);
+	free(input);
+	exit_status = 0;
+	if (av[0] != NULL)
+	{
+		if (is_builtin(av[0]))
+			exit_status = execute_builtin(av, minienv);
+		else
+			exit_status = exec_fork_extern(av, *minienv);
+	}
+	free_array(av);
+	restore_original_fds(original_fds);
+	return (exit_status);
+}
 
 static char	*prompt_input(t_env *minienv)
 {

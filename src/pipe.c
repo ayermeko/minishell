@@ -6,7 +6,7 @@
 /*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 21:47:41 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/22 19:32:02 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/23 21:52:45 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,25 +31,12 @@ int	pipe_start(char *input)
 	return (FALSE);
 }
 
-char	*get_next_pipe(char *str)
-{
-	while (*str)
-	{
-		if (*str == '\'' || *str == '"')
-			str = skip_quotes(str);
-		if (*str == '|')
-			return (str);
-		str++;
-	}
-	return (NULL);
-}
-
 //Checks if pipeline is empty
 int	empty_pipe(char *input)
 {
 	char	*next_pipe;
 
-	next_pipe = get_next_pipe(input);
+	next_pipe = get_spos(input, "|");
 	if (!next_pipe)
 		return (FALSE);
 	next_pipe++;
