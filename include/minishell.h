@@ -44,6 +44,11 @@ typedef struct s_env
 	struct s_env	*next;
 }	t_env;
 
+// builtin_exec.c
+
+int			execute_builtin(char **av, t_env **minienv);
+int			is_builtin(char *cmd);
+
 // error_msg.c
 
 int			syntax_error(char *token);
@@ -135,6 +140,7 @@ void		signal_handler(void);
 // utils.c
 
 int			fits_in_long_long(char *str);
+int 		is_command(char *str1, char *str2);
 void		delete_char(char *str, int len);
 long long	ft_atoll(const char *str);
 void		redirect_heredoc(char *command);

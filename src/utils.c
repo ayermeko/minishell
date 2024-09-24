@@ -6,7 +6,7 @@
 /*   By: ayermeko <ayermeko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 20:22:27 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/24 16:42:54 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/24 17:25:41 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,11 @@ int	fits_in_long_long(char *str)
 		str++;
 	}
 	return (TRUE);
+}
+
+int is_command(char *str1, char *str2)
+{
+    return (ft_strncmp(str1, str2, ft_strlen(str1) + 1) == 0);
 }
 
 void	delete_char(char *str, int len)
