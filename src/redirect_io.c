@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirect_io.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
+/*   By: ayermeko <ayermeko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 21:27:34 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/23 22:45:53 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/24 16:08:44 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	redirect_input(char *input)
 		return (FAILED);
 	}
 	else
-		redirect_fd(fd, 0);
+		redirect_fd(fd, STDIN_FILENO);
 	free(file_name);
 	return (SUCCESS);
 }
@@ -70,7 +70,7 @@ int	redirect_output(char *command)
 		return (FAILED);
 	}
 	else
-		redirect_fd(fd, 1);
+		redirect_fd(fd, STDOUT_FILENO);
 	free(file_name);
 	return (SUCCESS);
 }
@@ -78,12 +78,12 @@ int	redirect_output(char *command)
 int	handle_io(char *command, int original_fds[2], int fd_type)
 {
 	save_original_fd(original_fds, fd_type);
-	if (redirect_output(command) == FAILED && fd_type == 1)
+	if (redirect_output(command) == FAILED && fd_type == STDOUT_FILENO)
 	{
 		redirect_fd(original_fds[fd_type], fd_type);
 		return (FAILED);
 	}
-	else if (redirect_input(command) == FAILED && fd_type == 0)
+	else if (redirect_input(command) == FAILED && fd_type == STDIN_FILENO)
 	{
 		redirect_fd(original_fds[fd_type], fd_type);
 		return (FAILED);

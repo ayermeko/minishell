@@ -115,10 +115,15 @@ int			handle_io(char *command, int original_fds[2], int fd_type);
 
 // redirect.c
 
+void		restore_original_fds(int original_fds[2]);
 char 		*get_spos(char *str, const char *chars_to_find);
 int			unexpected_token(char *input);
 int			redirect_error(char *input);
 int			handle_redirects(char *input, int original_fds[2]);
+
+// scanner.c
+
+char		**split_av(char *input);
 
 // signal_handler.c
 
@@ -132,5 +137,6 @@ void		signal_handler(void);
 int			fits_in_long_long(char *str);
 void		delete_char(char *str, int len);
 long long	ft_atoll(const char *str);
+void		redirect_heredoc(char *command);
 
 #endif

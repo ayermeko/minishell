@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
+/*   By: ayermeko <ayermeko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 20:22:27 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/23 21:25:03 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/24 16:42:54 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,18 @@ long long	ft_atoll(const char *str)
 		str++;
 	}
 	return (number * sign);
+}
+
+void	redirect_heredoc(char *command)
+{
+	int		tmp_file_fd;
+
+	tmp_file_fd = open("/tmp/minishell_hd", O_RDONLY);
+	if (tmp_file_fd == -1)
+	{
+		print_perror_msg("open", "/tmp/minishell_hd");
+		return ;
+	}
+	redirect_fd(tmp_file_fd, STDIN_FILENO);
+	delete_char(get_spos(command, "\x01"), 1);
 }

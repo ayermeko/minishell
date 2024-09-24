@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   redirect.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
+/*   By: ayermeko <ayermeko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 20:17:22 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/23 22:37:49 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/24 16:47:13 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
+
+void	restore_original_fds(int original_fds[2])
+{
+	if (original_fds[0] != NO_REDIRECT)
+		redirect_fd(original_fds[0], STDIN_FILENO);
+	if (original_fds[1] != NO_REDIRECT)
+		redirect_fd(original_fds[1], STDOUT_FILENO);
+}
 
 char *get_spos(char *str, const char *chars_to_find)
 {
@@ -64,13 +72,13 @@ int	handle_redirects(char *input, int original_fds[2])
 	redirect = *get_spos(input, "><\x01");
 	while (redirect)
 	{
-		if (redirect == '<' && !handle_io(input, original_fds, 0))
+		if (redirect == '<' && !handle_io(input, original_fds, STDIN_FILENO))
 			return (FAILED);
-		if (redirect == '>' && !handle_io(input, original_fds, 1))
+		else if (redirect == '>' && !handle_io(input, original_fds, STDOUT_FILENO))
 			return (FAILED);
-		if (redirect == 1)
+		else if (redirect == 1)
 		{
-			save_original_fd_in(original_fds);
+			save_original_fd(original_fds, STDIN_FILENO);
 			redirect_heredoc(input);
 		}
 		redirect = *get_spos(input, "><\x01");
