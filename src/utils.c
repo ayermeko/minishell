@@ -6,7 +6,7 @@
 /*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 20:22:27 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/25 12:20:46 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/25 14:32:47 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,17 +85,4 @@ void	redirect_heredoc(char *command)
 	}
 	redirect_fd(tmp_file_fd, STDIN_FILENO);
 	delete_char(get_spos(command, "\x01"), 1);
-}
-
-int	is_valid_varname(char *name)
-{
-	if (!(ft_isalpha(*name) || *name == '_'))
-		return (FALSE);
-	while (*name)
-	{
-		if (!(ft_isalnum(*name) || *name == '_'))
-			return (FALSE);
-		name++;
-	}
-	return (TRUE);
 }

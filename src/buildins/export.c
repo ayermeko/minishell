@@ -6,21 +6,12 @@
 /*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 18:01:18 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/25 14:21:03 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/25 14:32:34 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-
-void	print_varname_error_msg(char *command, char *varname)
-{
-	ft_putstr_fd("minishell: ", STDERR_FILENO);
-	ft_putstr_fd(command, STDERR_FILENO);
-	ft_putstr_fd(": `", STDERR_FILENO);
-	ft_putstr_fd(varname, STDERR_FILENO);
-	ft_putstr_fd("': not a valid identifier\n", STDERR_FILENO);
-}
 
 int	is_valid_varname(char *name)
 {
