@@ -1,6 +1,11 @@
 NAME = minishell
 CFLAGS = -Wall -Wextra -Werror 
-SRCS = error_msg.c fd_handler.c heredoc_exec.c scanner.c init_minienv.c parser.c redirect.c signal_handler.c expand_input.c free_utils.c heredoc_handler.c main.c pipe.c redirect_io.c utils.c
+SRCS = error_msg.c fd_handler.c heredoc_exec.c init_minienv.c parser.c \
+       redirect.c scanner.c utils.c builtin_exec.c expand_input.c \
+       free_utils.c heredoc_handler.c main.c pipe.c redirect_io.c \
+       signal_handler.c \
+       buildins/cd.c buildins/echo.c buildins/env.c buildins/exit.c \
+       buildins/export.c buildins/pwd.c buildins/unset.c
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 OBJ_DIR = obj
 LDLIBS	= -lreadline -lft

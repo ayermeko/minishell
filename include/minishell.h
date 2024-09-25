@@ -44,6 +44,14 @@ typedef struct s_env
 	struct s_env	*next;
 }	t_env;
 
+// buildins
+
+int			cd(char **av, t_env *minienv);
+int			echo(char **av);
+int			env(t_env *minienv);
+int			builtin_exit(char **av, t_env **minienv);
+int			pwd(void);
+
 // builtin_exec.c
 
 int			execute_builtin(char **av, t_env **minienv);
@@ -71,7 +79,6 @@ void		close_all_fds(void);
 
 char		*free_spaces(char *input);
 void		free_array(char **av);
-int			builtin_exit(char **av, t_env **minienv);
 
 // heredoc_exec.c
 

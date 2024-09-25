@@ -6,7 +6,7 @@
 /*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 20:58:33 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/20 20:12:20 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/25 12:01:42 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ t_env	*init_minienv(char **environ)
 {
 	t_env	*minienv;
 	int		i;
+	char	*home;
 
 	minienv = NULL;
 	i = 0;
@@ -77,8 +78,8 @@ t_env	*init_minienv(char **environ)
 		minienv_add(environ[i++], &minienv);
 	if (!minienv_node("OLDPWD", minienv))
 		minienv_add("OLDPWD", &minienv);
+	home = ft_strjoin("__HOME=", minienv_value("HOME", minienv));
+	minienv_add(home, &minienv);
+	free(home);
 	return (minienv);
 }
-
-//niceily sorted file.
-//Done
