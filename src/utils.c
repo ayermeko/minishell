@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayermeko <ayermeko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 20:22:27 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/25 18:10:13 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/25 18:14:48 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ void	minienv_update(char *name, char *value, t_env *minienv)
 {
 	t_env	*aux;
 	char	*new_pair;
-	int		i;
 
 	aux = minienv_node(name, minienv);
 	if (!aux)

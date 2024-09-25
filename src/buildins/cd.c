@@ -6,7 +6,7 @@
 /*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 18:01:08 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/25 14:21:03 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/25 18:25:38 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	cd(char **av, t_env *minienv)
 		path = av[1];
 	else
 		path = minienv_value("__HOME", minienv);
-	if (chdir(path) != 0)
+	if (path && chdir(path) != 0)
 	{
 		print_perror_msg("cd", av[1]);
 		return (EXIT_FAILURE);

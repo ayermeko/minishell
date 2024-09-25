@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirect_io.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayermeko <ayermeko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 21:27:34 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/25 18:07:08 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/25 18:19:29 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,12 @@ int	redirect_output(char *command)
 int	handle_io(char *command, int original_fds[2], int fd_type)
 {
 	save_original_fd(original_fds, fd_type);
-	if (redirect_output(command) == FAILED && fd_type == STDOUT_FILENO)
+	if (fd_type == STDOUT_FILENO && redirect_output(command) == FAILED)
 	{
 		redirect_fd(original_fds[fd_type], fd_type);
 		return (FAILED);
 	}
-	else if (redirect_input(command) == FAILED && fd_type == STDIN_FILENO)
+	else if (fd_type == STDIN_FILENO && redirect_input(command) == FAILED)
 	{
 		redirect_fd(original_fds[fd_type], fd_type);
 		return (FAILED);
