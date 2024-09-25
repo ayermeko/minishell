@@ -71,6 +71,7 @@ void		print_varname_error_msg(char *command, char *varname);
 
 // exec_fork_extern.c
 
+void		execute_external(char **av, t_env *minienv);
 void		define_execute_signals(int child_pid);
 int			exec_fork_extern(char **av, t_env *minienv);
 
@@ -162,5 +163,7 @@ int 		is_command(char *str1, char *str2);
 void		delete_char(char *str, int len);
 long long	ft_atoll(const char *str);
 void		redirect_heredoc(char *command);
+char		*create_keypair(char *name, char *value);
+void		minienv_update(char *name, char *value, t_env *minienv);
 
 #endif
