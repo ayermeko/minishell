@@ -6,7 +6,7 @@
 /*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 20:58:33 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/25 12:01:42 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/25 14:21:03 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ t_env	*minienv_node(char *name, t_env *minienv)
 
 char *value_only(char *key_pair)
 {
-    char *equal_sign;
+    char *is_command_sign;
 
-    equal_sign = ft_strchr(key_pair, '=');
-    if (!equal_sign)
+    is_command_sign = ft_strchr(key_pair, '=');
+    if (!is_command_sign)
         return (NULL);
-    return (equal_sign + 1);
+    return (is_command_sign + 1);
 }
 
 char	*minienv_value(char *name, t_env *minienv)

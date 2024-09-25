@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_exec.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayermeko <ayermeko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 17:22:30 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/24 17:54:58 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/25 14:21:03 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,19 @@ int	execute_builtin(char **av, t_env **minienv)
 
 int	is_builtin(char *cmd)
 {
-	if (equal(cmd, "echo"))
+	if (is_command(cmd, "echo"))
 		return (TRUE);
-	if (equal(cmd, "cd"))
+	if (is_command(cmd, "cd"))
 		return (TRUE);
-	if (equal(cmd, "pwd"))
+	if (is_command(cmd, "pwd"))
 		return (TRUE);
-	if (equal(cmd, "export"))
+	if (is_command(cmd, "export"))
 		return (TRUE);
-	if (equal(cmd, "unset"))
+	if (is_command(cmd, "unset"))
 		return (TRUE);
-	if (equal(cmd, "env"))
+	if (is_command(cmd, "env"))
 		return (TRUE);
-	if (equal(cmd, "exit"))
+	if (is_command(cmd, "exit"))
 		return (TRUE);
 	return (FALSE);
 }

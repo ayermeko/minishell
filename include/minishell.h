@@ -65,6 +65,7 @@ int			syntax_error(char *token);
 void		print_perror_msg(char *command, char *perror_msg);
 void		print_error_msg(char *command, char *msg);
 void		exit_with_error(char *command, char *msg, int error);
+void		print_varname_error_msg(char *command, char *varname);
 
 // expand_input.c
 

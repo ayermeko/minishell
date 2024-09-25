@@ -6,7 +6,7 @@
 /*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 20:17:22 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/22 14:45:07 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/25 14:19:06 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,13 @@ void	exit_with_error(char *command, char *msg, int error)
 	close_all_fds();
 	rl_clear_history();
 	exit(error);
+}
+
+void	print_varname_error_msg(char *command, char *varname)
+{
+	ft_putstr_fd("minishell: ", STDERR_FILENO);
+	ft_putstr_fd(command, STDERR_FILENO);
+	ft_putstr_fd(": `", STDERR_FILENO);
+	ft_putstr_fd(varname, STDERR_FILENO);
+	ft_putstr_fd("': not a valid identifier\n", STDERR_FILENO);
 }
