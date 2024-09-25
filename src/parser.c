@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
+/*   By: ayermeko <ayermeko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 20:47:37 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/23 17:13:21 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/25 18:04:05 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,13 @@ int	input_error(char *input, int *exit_status, t_env *minienv)
 {
 	if (!*input || unclosed_quotes(input))
 		return (free(input), TRUE);
+		
 	if ((pipe_start(input) || redirect_error(input) || empty_pipe(input)))
 	{
 		*exit_status = 2;
 		return (free(input), TRUE);
 	}
-	if (heredoc_handler(input, exit_status, minienv))
+	if (!heredoc_handler(input, exit_status, minienv))
 		return (free(input), TRUE);
 	return (FALSE);
 }

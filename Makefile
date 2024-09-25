@@ -16,8 +16,11 @@ LIBFT_PATH	= extra_libs/Libft/
 
 all: $(NAME)
 
-$(OBJ_DIR)/%.o: %.c
+$(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)/buildins
 	@$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJ_DIR)/buildins:
+	@mkdir -p $@
 
 $(NAME): $(LIBFT_A) $(OBJ_DIR) $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LDLIBS) $(LDFLAGS)
@@ -38,7 +41,7 @@ clean:
 
 fclean: clean
 	@rm -rf $(NAME)
-	@make fclean -C $(LIBFT_PATH)
+#	@make fclean -C $(LIBFT_PATH)
 	@echo removed $(NAME)
 
 re: fclean all

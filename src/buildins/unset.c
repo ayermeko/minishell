@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
+/*   By: ayermeko <ayermeko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 11:40:20 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/25 13:41:46 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/25 16:40:20 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	remove_from_minienv(char *varname, t_env **m)
 		if (ft_strncmp((*prev_next)->key_pair, varname, ft_strlen(varname)) == 0 &&
 		    (*prev_next)->key_pair[ft_strlen(varname)] == '=')
 			return (m_del_node(prev_next));
-		prev_next = &(*prev_next->next);
+		prev_next = &(*prev_next)->next;
 	}
 }
 

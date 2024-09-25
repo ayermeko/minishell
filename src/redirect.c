@@ -6,7 +6,7 @@
 /*   By: ayermeko <ayermeko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 20:17:22 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/24 16:47:13 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/25 17:05:11 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,31 @@ void	restore_original_fds(int original_fds[2])
 		redirect_fd(original_fds[0], STDIN_FILENO);
 	if (original_fds[1] != NO_REDIRECT)
 		redirect_fd(original_fds[1], STDOUT_FILENO);
+}
+
+char	*get_rposition(char *str)
+{
+	while (*str)
+	{
+		if (*str == '\'' || *str == '"')
+			str = skip_quotes(str);
+		if (*str == '>' || *str == '<' || *str == 1)
+			return (str);
+		str++;
+	}
+	return (str);
+}
+
+char	*get_redirect_position(char *str, char redirect_char)
+{
+	while (*str)
+	{
+		str = skip_quotes(str);
+		if (*str == redirect_char)
+			return (str);
+		str++;
+	}
+	return (str);
 }
 
 char *get_spos(char *str, const char *chars_to_find)
@@ -46,7 +71,7 @@ int	redirect_error(char *input)
 {
 	char	*position;
 
-	position = get_spos(input, "><\x01");
+	position = get_rposition(input);
 	if (!*position)
 		return (FALSE);
 	if (position[0] == '<' && position[1] == '<')
@@ -69,7 +94,7 @@ int	handle_redirects(char *input, int original_fds[2])
 	
 	original_fds[0] = NO_REDIRECT;
 	original_fds[1] = NO_REDIRECT;
-	redirect = *get_spos(input, "><\x01");
+	redirect = *(get_rposition(input));
 	while (redirect)
 	{
 		if (redirect == '<' && !handle_io(input, original_fds, STDIN_FILENO))
@@ -81,7 +106,7 @@ int	handle_redirects(char *input, int original_fds[2])
 			save_original_fd(original_fds, STDIN_FILENO);
 			redirect_heredoc(input);
 		}
-		redirect = *get_spos(input, "><\x01");
+		redirect = *(get_rposition(input));
 	}
 	return (SUCCESS);
 }

@@ -44,6 +44,8 @@ typedef struct s_env
 	struct s_env	*next;
 }	t_env;
 
+char	*get_rposition(char *str);
+
 // buildins
 
 int			cd(char **av, t_env *minienv);
@@ -142,6 +144,8 @@ int			handle_io(char *command, int original_fds[2], int fd_type);
 void		restore_original_fds(int original_fds[2]);
 char 		*get_spos(char *str, const char *chars_to_find);
 int			unexpected_token(char *input);
+char		*get_rposition(char *str);
+char		*get_redirect_position(char *str, char redirect_char);
 int			redirect_error(char *input);
 int			handle_redirects(char *input, int original_fds[2]);
 

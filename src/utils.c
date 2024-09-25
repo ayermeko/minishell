@@ -6,7 +6,7 @@
 /*   By: ayermeko <ayermeko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 20:22:27 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/25 15:44:15 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/25 17:06:35 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	redirect_heredoc(char *command)
 		return ;
 	}
 	redirect_fd(tmp_file_fd, STDIN_FILENO);
-	delete_char(get_spos(command, "\x01"), 1);
+	delete_char(get_redirect_position(command, 1), 1);
 }
 
 char	*create_keypair(char *name, char *value)
