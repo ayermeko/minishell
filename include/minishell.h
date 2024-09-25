@@ -54,8 +54,8 @@ int			pwd(void);
 int			unset(char **av, t_env **minienv);
 int			builtin_export(char **av, t_env **minienv);
 
-
 int			is_valid_varname(char *name);
+
 // builtin_exec.c
 
 int			execute_builtin(char **av, t_env **minienv);
@@ -68,6 +68,11 @@ void		print_perror_msg(char *command, char *perror_msg);
 void		print_error_msg(char *command, char *msg);
 void		exit_with_error(char *command, char *msg, int error);
 void		print_varname_error_msg(char *command, char *varname);
+
+// exec_fork_extern.c
+
+void		define_execute_signals(int child_pid);
+int			exec_fork_extern(char **av, t_env *minienv);
 
 // expand_input.c
 
