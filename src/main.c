@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
+/*   By: ayermeko <ayermeko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 20:47:37 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/25 13:34:18 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/25 14:56:23 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	one_command(char *input, t_env **minienv)
 		if (is_builtin(av[0]))
 			exit_status = execute_builtin(av, minienv);
 		else
-			exit_status = exec_fork_extern(av, *minienv); //UNDONE
+			exit_status = exec_fork_extern(av, *minienv);
 	}
 	free_array(av);
 	restore_original_fds(original_fds);
