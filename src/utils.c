@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayermeko <ayermeko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 20:22:27 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/25 15:44:15 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/25 15:59:02 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,13 +120,5 @@ void	minienv_update(char *name, char *value, t_env *minienv)
 		return ;
 	}
 	free(aux->key_pair);
-	new_pair = malloc((ft_strlen(name) + ft_strlen(value) + 2) * sizeof(char));
-	i = 0;
-	while (*name)
-		new_pair[i++] = *name++;
-	new_pair[i++] = '=';
-	while (*value)
-		new_pair[i++] = *value++;
-	new_pair[i] = '\0';
-	aux->key_pair = new_pair;
+	aux->key_pair = create_keypair(name, value);
 }
