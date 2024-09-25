@@ -6,7 +6,7 @@
 /*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 20:15:39 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/25 11:44:17 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/25 13:16:12 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,14 @@ void	free_array(char **av)
 	}
 	free(av);
 	av = NULL;
+}
+
+void	m_del_node(t_env **node)
+{
+	t_env	*temp;
+
+	temp = *node;
+	*node = (*node)->next;
+	free(temp->key_pair);
+	free(temp);
 }

@@ -51,6 +51,8 @@ int			echo(char **av);
 int			env(t_env *minienv);
 int			builtin_exit(char **av, t_env **minienv);
 int			pwd(void);
+int			unset(char **av, t_env **minienv);
+int			builtin_export(char **av, t_env **minienv);
 
 // builtin_exec.c
 
@@ -79,6 +81,7 @@ void		close_all_fds(void);
 
 char		*free_spaces(char *input);
 void		free_array(char **av);
+void		m_del_node(t_env **node);
 
 // heredoc_exec.c
 
@@ -151,5 +154,6 @@ int 		is_command(char *str1, char *str2);
 void		delete_char(char *str, int len);
 long long	ft_atoll(const char *str);
 void		redirect_heredoc(char *command);
+int			is_valid_varname(char *name);
 
 #endif
