@@ -3,7 +3,7 @@ CFLAGS = -Wall -Wextra -Werror
 SRCS = expand_input.c getpath.c main.c redirect_io.c \
 	   builtin_exec.c external_exec.c heredoc_exec.c \
 	   parser.c scanner.c error_msg.c fd_handler.c \
-	   heredoc_handler.c pipe.c signal_handler.c \
+	   heredoc_handler.c pipe.c signal_handler.c split_commands.c \
 	   exec_fork_extern.c free_utils.c init_minienv.c redirect.c utils.c \
        buildins/cd.c buildins/echo.c buildins/env.c buildins/exit.c \
        buildins/export.c buildins/pwd.c buildins/unset.c
