@@ -73,7 +73,6 @@ void		print_varname_error_msg(char *command, char *varname);
 
 // exec_fork_extern.c
 
-void		execute_external(char **av, t_env *minienv);
 void		define_execute_signals(int child_pid);
 int			exec_fork_extern(char **av, t_env *minienv);
 
@@ -84,6 +83,14 @@ char		*find_exit_status_position(char *input);
 void		expand_exit_status(char **input, int exit_status);
 void		expand_input(char **input, t_env *minienv, int exit_status);
 
+// external_exec.c
+
+int			is_path(char *command);
+void		external_exit(char **av, t_env *minienv, int exit_status);
+int			is_empty(char *str);
+int			execute_external(char **av, t_env *minienv);
+char		**minienv_to_envp(t_env *minienv);
+
 // fd_handler.c
 
 void		close_all_fds(void);
@@ -93,6 +100,10 @@ void		close_all_fds(void);
 char		*free_spaces(char *input);
 void		free_array(char **av);
 void		m_del_node(t_env **node);
+
+// get_path.c
+
+char		*get_path(char *command, t_env *minienv);
 
 // heredoc_exec.c
 

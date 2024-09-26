@@ -6,7 +6,7 @@
 /*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 18:32:31 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/20 16:26:00 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/26 17:00:49 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_list
 
 typedef struct s_env t_env;
 
-int		ft_lstsize(t_list *lst);
+int		ft_lstsize(t_env *lst);
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_back(t_env **lst, t_env *new);

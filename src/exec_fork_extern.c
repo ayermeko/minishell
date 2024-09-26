@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   exec_fork_extern.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayermeko <ayermeko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 14:55:50 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/25 15:37:29 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/26 13:45:02 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
-
-void	execute_external(char **av, t_env *minienv)
-{
-    
-}
 
 void	define_execute_signals(int child_pid)
 {
