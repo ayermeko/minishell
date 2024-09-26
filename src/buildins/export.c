@@ -6,12 +6,11 @@
 /*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 18:01:18 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/25 14:32:34 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/26 19:27:26 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
-
 
 int	is_valid_varname(char *name)
 {

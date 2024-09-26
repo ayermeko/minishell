@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/26 19:21:08 by ayermeko          #+#    #+#             */
+/*   Updated: 2024/09/26 19:24:27 by ayermeko         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
@@ -44,7 +56,7 @@ typedef struct s_env
 	struct s_env	*next;
 }	t_env;
 
-char	*get_rposition(char *str);
+char		*get_rposition(char *str);
 
 // buildins
 
@@ -94,6 +106,7 @@ char		**minienv_to_envp(t_env *minienv);
 // fd_handler.c
 
 void		close_all_fds(void);
+void		close_extra_fds(void);
 
 // free_utils.c
 
@@ -105,7 +118,7 @@ void		m_del_node(t_env **node);
 
 char		*get_path(char *command, t_env *minienv);
 
-// heredoc_exec.c
+// heredoc_e.c
 
 void		insert_string(char **input, char *var_value, char *rest_str);
 char		*var_position(char *s);
@@ -117,13 +130,14 @@ void		read_heredoc(int *exit_status, t_env *minienv, char *delimiter);
 int			delimiter_len(char *s);
 char		*get_delimiter(char *delim_pos);
 char		*get_heredoc_pos(char *str);
-int			exec_heredoc(char *delimiter, int *exit_status, t_env *minienv, char *input);
+int			exec_heredoc(char *delimiter, int *exit_status,
+				t_env *minienv, char *input);
 int			heredoc_handler(char *input, int *exit_status, t_env *minienv);
 
 // init_minienv.c
 
 t_env		*minienv_node(char *name, t_env *minienv);
-char 		*value_only(char *key_pair);
+char		*value_only(char *key_pair);
 char		*minienv_value(char *name, t_env *minienv);
 void		minienv_add(char *key_pair, t_env **minienv);
 t_env		*init_minienv(char **environ);
@@ -153,7 +167,7 @@ int			handle_io(char *command, int original_fds[2], int fd_type);
 // redirect.c
 
 void		restore_original_fds(int original_fds[2]);
-char 		*get_spos(char *str, const char *chars_to_find);
+char		*get_spos(char *str, const char *chars_to_find);
 int			unexpected_token(char *input);
 char		*get_rposition(char *str);
 char		*get_redirect_position(char *str, char redirect_char);
@@ -174,7 +188,7 @@ void		signal_handler(void);
 // utils.c
 
 int			fits_in_long_long(char *str);
-int 		is_command(char *str1, char *str2);
+int			is_command(char *str1, char *str2);
 void		delete_char(char *str, int len);
 long long	ft_atoll(const char *str);
 void		redirect_heredoc(char *command);

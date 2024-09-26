@@ -6,13 +6,13 @@
 /*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 18:38:26 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/26 17:02:36 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/26 19:20:19 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_lstsize(t_env *lst)
+int	ft_lstsize(t_env *lst)
 {
 	t_env	*new;
 	int		cnt;

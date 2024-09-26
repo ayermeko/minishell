@@ -6,11 +6,27 @@
 /*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 13:25:19 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/26 17:19:35 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/26 18:29:42 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
+
+static void	handle_execve_errors(char **args, char *path, char **envp)
+{
+	int	error;
+
+	error = EXIT_FAILURE;
+	print_perror_msg("execve", args[0]);
+	if (access(path, F_OK) != 0)
+		error = CMD_NOT_FOUND;
+	else if (access(path, X_OK) != 0)
+		error = NOT_EXECUTABLE;
+	free_array(args);
+	free_array(envp);
+	free(path);
+	exit(error);
+}
 
 char	**minienv_to_envp(t_env *minienv)
 {
@@ -94,8 +110,7 @@ int	execute_external(char **av, t_env *minienv)
 	rl_clear_history();
 	close_extra_fds();
 	envp = minienv_to_envp(minienv);
-	free_minienv(&minienv);
+	ft_lstclear(&minienv);
 	if (execve(path, av, envp) == -1)
 		handle_execve_errors(av, path, envp);
-	exit(EXIT_SUCCESS);
 }

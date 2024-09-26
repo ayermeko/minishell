@@ -6,13 +6,13 @@
 /*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 20:17:02 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/23 21:35:11 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/26 18:23:42 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-static void	close_extra_fds(void)
+void	close_extra_fds(void)
 {
 	int	last_open_fd;
 
