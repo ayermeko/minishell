@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayermeko <ayermeko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 20:47:37 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/25 21:36:40 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/26 21:15:10 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static int	minishell(t_env *minienv)
 {
 	int		exit_status;
 	char	*input;
-	//char	**command;
+	char	**command;
 
 	exit_status = EXIT_SUCCESS;
 	while (1)
@@ -69,7 +69,13 @@ static int	minishell(t_env *minienv)
 		expand_input(&input, minienv, exit_status);
 		if (has_pipe(input) == FALSE)
 			exit_status = one_command(input, &minienv);
-		// UNDONE
+		else
+		{
+			commands = split_commands(input);
+			free(input);
+			exit_status = multiple_commands(commands, &minienv);
+			free_array(commands);
+		}
 	}
 	return (0);
 }
