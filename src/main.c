@@ -6,7 +6,7 @@
 /*   By: ayermeko <ayermeko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 20:47:37 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/25 18:01:17 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/25 21:36:40 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ static int	one_command(char *input, t_env **minienv)
 	{
 		if (is_builtin(av[0]))
 			exit_status = execute_builtin(av, minienv);
-		// else
-		// 	exit_status = exec_fork_extern(av, *minienv);
+		else
+			exit_status = exec_fork_extern(av, *minienv);
 	}
 	free_array(av);
 	restore_original_fds(original_fds);

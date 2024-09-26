@@ -41,7 +41,7 @@ clean:
 
 fclean: clean
 	@rm -rf $(NAME)
-#	@make fclean -C $(LIBFT_PATH)
+	@make fclean -C $(LIBFT_PATH)
 	@echo removed $(NAME)
 
 re: fclean all
