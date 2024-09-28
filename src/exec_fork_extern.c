@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_fork_extern.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
+/*   By: ayermeko <ayermeko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 14:55:50 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/26 13:45:02 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/28 11:38:00 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

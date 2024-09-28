@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   external_exec.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
+/*   By: ayermeko <ayermeko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 13:25:19 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/26 18:29:42 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/28 11:17:17 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,6 @@ char	**minienv_to_envp(t_env *minienv)
 	return (envp);
 }
 
-int	is_path(char *command)
-{
-	if (*command == '.')
-		command++;
-	if (*command == '.')
-		command++;
-	if (*command == '/')
-		return (TRUE);
-	return (FALSE);
-}
-
 static int	is_folder(char *command)
 {
 	struct stat	statbuf;
@@ -63,7 +52,7 @@ static int	is_folder(char *command)
 	if (stat(command, &statbuf) != 0)
 		return (FALSE);
 	if (S_ISDIR(statbuf.st_mode))
-		return(is_path(command));
+		return (is_path(command));
 	return (FALSE);
 }
 
@@ -80,20 +69,7 @@ void	external_exit(char **av, t_env *minienv, int exit_status)
 	exit(exit_status);
 }
 
-int	is_empty(char *str)
-{
-	if (!str)
-		return (1);
-	while (*str)
-	{
-		if (*str != ' ')
-			return (0);
-		str++;
-	}
-	return (1);
-}
-
-int	execute_external(char **av, t_env *minienv)
+void	execute_external(char **av, t_env *minienv)
 {
 	char	*path;
 	char	**envp;

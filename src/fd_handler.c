@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fd_handler.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
+/*   By: ayermeko <ayermeko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 20:17:02 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/26 18:23:42 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/28 11:38:25 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,3 @@ void	close_all_fds(void)
 	close(1);
 	close(2);
 }
-

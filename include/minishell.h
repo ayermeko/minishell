@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
+/*   By: ayermeko <ayermeko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 19:21:08 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/26 19:24:27 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/28 11:02:38 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,13 @@ int			is_valid_varname(char *name);
 int			execute_builtin(char **av, t_env **minienv);
 int			is_builtin(char *cmd);
 
+// child_redir.c
+
+int			execute_forked_builtin(char **args, t_env **minienv);
+void		execute_fork_cmd(char *command, char **commands, t_env **minienv);
+void		quit_child(char **commands, t_env **minienv);
+void		handle_child_redir(char *command, char **commands, t_env **minienv);
+
 // error_msg.c
 
 int			syntax_error(char *token);
@@ -100,7 +107,7 @@ void		expand_input(char **input, t_env *minienv, int exit_status);
 int			is_path(char *command);
 void		external_exit(char **av, t_env *minienv, int exit_status);
 int			is_empty(char *str);
-int			execute_external(char **av, t_env *minienv);
+void		execute_external(char **av, t_env *minienv);
 char		**minienv_to_envp(t_env *minienv);
 
 // fd_handler.c
@@ -141,6 +148,13 @@ char		*value_only(char *key_pair);
 char		*minienv_value(char *name, t_env *minienv);
 void		minienv_add(char *key_pair, t_env **minienv);
 t_env		*init_minienv(char **environ);
+
+// multiple_command.c
+
+void		handle_pipe(int original_fd_out, char *curr_cmd, char **commands);
+int			arr_len(char **arr);
+int			*init_children_pid(char **commands);
+int			multiple_commands(char **commands, t_env **minienv);
 
 // parser.c
 
@@ -184,6 +198,10 @@ int			handle_signal_interrupt(int status, int is_last_child);
 int			wait_for_child(int child_pid, int is_last_child);
 void		define_heredoc_signals(int child_pid);
 void		signal_handler(void);
+
+// pipe.c
+
+char		**split_commands(char *input);
 
 // utils.c
 

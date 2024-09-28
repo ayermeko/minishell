@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
+/*   By: ayermeko <ayermeko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 20:47:37 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/26 21:15:10 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/28 11:39:21 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	one_command(char *input, t_env **minienv)
 static char	*prompt_input(t_env *minienv)
 {
 	char	*input;
-	
+
 	input = readline("minishell$ ");
 	if (!input)
 		builtin_exit(NULL, &minienv);
@@ -57,7 +57,7 @@ static int	minishell(t_env *minienv)
 {
 	int		exit_status;
 	char	*input;
-	char	**command;
+	char	**commands;
 
 	exit_status = EXIT_SUCCESS;
 	while (1)
@@ -80,11 +80,9 @@ static int	minishell(t_env *minienv)
 	return (0);
 }
 
-int main(void)
+int	main(void)
 {
-	extern char **environ;
+	extern char	**environ;
 
 	return (minishell(init_minienv(environ)));
 }
-
-// niceily sorted file.

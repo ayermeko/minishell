@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal_handler.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
+/*   By: ayermeko <ayermeko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 14:18:40 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/22 15:01:59 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/28 11:44:52 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void	define_heredoc_signals(int child_pid)
 static void	handle_sigint(int sig)
 {
 	(void)sig;
-
 	ft_putstr_fd("\n", 1);
 	rl_on_new_line();
 	rl_replace_line("", 0);
@@ -70,7 +69,7 @@ void	signal_handler(void)
 {
 	struct sigaction	sa_sigint;
 	struct sigaction	sa_sigquit;
-	
+
 	sa_sigint.sa_handler = &handle_sigint;
 	sa_sigint.sa_flags = 0;
 	sigemptyset(&sa_sigint.sa_mask);

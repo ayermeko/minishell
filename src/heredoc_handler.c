@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc_handler.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
+/*   By: ayermeko <ayermeko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 15:58:43 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/22 13:48:50 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/28 11:42:39 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int	heredoc_handler(char *input, int *exit_status, t_env *minienv)
 {
 	char	*delimiter;
 	char	*heredoc_pos;
-	
+
 	heredoc_pos = get_heredoc_pos(input);
 	if (!heredoc_pos)
 		return (SUCCESS);

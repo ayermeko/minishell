@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_minienv.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
+/*   By: ayermeko <ayermeko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 20:58:33 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/25 14:21:03 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/28 11:22:06 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,22 @@ t_env	*minienv_node(char *name, t_env *minienv)
 	current = minienv;
 	while (current)
 	{
-		if (ft_strncmp(name, current->key_pair, size) == 0 
-		&& current->key_pair[size] == '=')
+		if (ft_strncmp(name, current->key_pair, size) == 0
+			&& current->key_pair[size] == '=')
 			return (current);
 		current = current->next;
 	}
 	return (NULL);
 }
 
-char *value_only(char *key_pair)
+char	*value_only(char *key_pair)
 {
-    char *is_command_sign;
+	char	*is_command_sign;
 
-    is_command_sign = ft_strchr(key_pair, '=');
-    if (!is_command_sign)
-        return (NULL);
-    return (is_command_sign + 1);
+	is_command_sign = ft_strchr(key_pair, '=');
+	if (!is_command_sign)
+		return (NULL);
+	return (is_command_sign + 1);
 }
 
 char	*minienv_value(char *name, t_env *minienv)
