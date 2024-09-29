@@ -40,9 +40,9 @@ int	fits_in_long_long(char *str)
 	return (TRUE);
 }
 
-int is_command(char *str1, char *str2)
+int	is_command(char *str1, char *str2)
 {
-    return (ft_strncmp(str1, str2, ft_strlen(str1) + 1) == 0);
+	return (ft_strncmp(str1, str2, ft_strlen(str1) + 1) == 0);
 }
 
 void	delete_char(char *str, int len)
