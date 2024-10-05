@@ -42,7 +42,7 @@ int	redirect_input(char *input)
 		return (FAILED);
 	}
 	else
-		redirect_fd(fd, STDIN_FILENO);
+		redirect_fd(fd, 0);
 	free(file_name);
 	return (SUCCESS);
 }
@@ -70,7 +70,7 @@ int	redirect_output(char *command)
 		return (FAILED);
 	}
 	else
-		redirect_fd(fd, STDOUT_FILENO);
+		redirect_fd(fd, 1);
 	free(file_name);
 	return (SUCCESS);
 }
@@ -78,12 +78,12 @@ int	redirect_output(char *command)
 int	handle_io(char *command, int original_fds[2], int fd_type)
 {
 	save_original_fd(original_fds, fd_type);
-	if (fd_type == STDOUT_FILENO && redirect_output(command) == FAILED)
+	if (fd_type == 1 && redirect_output(command) == FAILED)
 	{
 		redirect_fd(original_fds[fd_type], fd_type);
 		return (FAILED);
 	}
-	else if (fd_type == STDIN_FILENO && redirect_input(command) == FAILED)
+	else if (fd_type == 0 && redirect_input(command) == FAILED)
 	{
 		redirect_fd(original_fds[fd_type], fd_type);
 		return (FAILED);

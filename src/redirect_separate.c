@@ -42,14 +42,13 @@ int	handle_redirects(char *input, int original_fds[2])
 	redirect = *(get_rposition(input));
 	while (redirect)
 	{
-		if (redirect == '<' && !handle_io(input, original_fds, STDIN_FILENO))
+		if (redirect == '<' && !handle_io(input, original_fds, 0))
 			return (FAILED);
-		else if (redirect == '>'
-			&& !handle_io(input, original_fds, STDOUT_FILENO))
+		else if (redirect == '>' && !handle_io(input, original_fds, 1))
 			return (FAILED);
 		else if (redirect == 1)
 		{
-			save_original_fd(original_fds, STDIN_FILENO);
+			save_original_fd(original_fds, 0);
 			redirect_heredoc(input);
 		}
 		redirect = *(get_rposition(input));

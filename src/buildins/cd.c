@@ -24,17 +24,18 @@ int	cd(char **av, t_env *minienv)
 	if (av[1] && !is_command(av[1], "~"))
 		path = av[1];
 	else
-		path = minienv_value("__HOME", minienv);
-	if (path && chdir(path) != 0)
-	{
-		print_perror_msg("cd", av[1]);
-		return (EXIT_FAILURE);
-	}
+		path = minienv_value("HOME", minienv);
+	if (!path)
+		return (print_error_msg("cd", "HOME not set"), 1);
+	if (path[0] == 0)
+		return (0);
+	if (chdir(path) != 0)
+		return (print_perror_msg("cd", av[1]), EXIT_FAILURE);
 	pwd = minienv_value("PWD", minienv);
 	oldpwd = minienv_value("OLDPWD", minienv);
-	if (oldpwd && pwd && *pwd)
+	if (oldpwd && pwd)
 		minienv_update("OLDPWD", pwd, minienv);
-	if (pwd && *pwd)
+	if (pwd)
 		minienv_update("PWD", getcwd(cwd, PATH_MAX), minienv);
 	return (EXIT_SUCCESS);
 }

@@ -85,6 +85,8 @@ char	**split_av(char *input)
 	replace_spaces(input, '\'');
 	remove_quotes(input);
 	av = ft_split(input, ' ');
+	if (!av)
+		return (NULL);
 	restore_spaces(av);
 	return (av);
 }

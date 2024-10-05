@@ -15,9 +15,9 @@
 void	restore_original_fds(int original_fds[2])
 {
 	if (original_fds[0] != NO_REDIRECT)
-		redirect_fd(original_fds[0], STDIN_FILENO);
+		redirect_fd(original_fds[0], 0);
 	if (original_fds[1] != NO_REDIRECT)
-		redirect_fd(original_fds[1], STDOUT_FILENO);
+		redirect_fd(original_fds[1], 1);
 }
 
 char	*get_rposition(char *str)

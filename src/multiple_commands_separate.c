@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   multiple_commands_separate.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
+/*   By: olomova <olomova@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 17:07:03 by olomova           #+#    #+#             */
-/*   Updated: 2024/09/29 18:43:35 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/28 17:07:08 by olomova          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -33,7 +33,7 @@ int	unclosed_quotes(char *input)
 	quote_char = '\0';
 	while (*input)
 	{
-		if ((*input == '\'' || *input == '"') && quote_char == '\0')
+		if (quote_char == '\0' && (*input == '\'' || *input == '"'))
 			quote_char = *input;
 		else if (*input == quote_char)
 			quote_char = '\0';
@@ -47,7 +47,7 @@ int	unclosed_quotes(char *input)
 	return (FALSE);
 }
 
-char	*trim_spaces_no_free(char	*input)
+char	*trim_spaces_no_free(char *input)
 {
 	int		start;
 	int		end;
@@ -67,7 +67,7 @@ char	*trim_spaces_no_free(char	*input)
 
 int	input_error(char *input, int *exit_status, t_env *minienv)
 {
-	if (!*input || unclosed_quotes(input))
+	if (!input || !*input || unclosed_quotes(input))
 		return (free(input), TRUE);
 	if ((pipe_start(input) || redirect_error(input) || empty_pipe(input)))
 	{

@@ -1,5 +1,5 @@
 NAME = minishell
-CFLAGS = -Wall -Wextra -Werror 
+CFLAGS = -Wall -Wextra -Werror
 SRCS = builtin_exec.c child_redir.c error_msg.c exec_fork_extern.c expand_input.c external_exec.c fd_handler.c free_utils.c getpath.c heredoc_exec.c heredoc_handler.c init_minienv.c main.c multiple_commands_separate.c multiple_commands.c parser.c pipe.c redirect.c redirect_separate.c redirect_io.c scanner.c signal_handler.c split_pipe.c utils.c utils_2.c\
        buildins/cd.c buildins/echo.c buildins/env.c buildins/exit.c \
        buildins/export.c buildins/pwd.c buildins/unset.c

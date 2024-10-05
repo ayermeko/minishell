@@ -51,6 +51,8 @@ char	*get_delimiter(char *delim_pos)
 		delete_char(delim_pos, 1);
 	len = delimiter_len(delim_pos);
 	delimiter = ft_substr(delim_pos, 0, len);
+	if (!delimiter)
+		return (NULL);
 	delete_char(delim_pos, len);
 	return (delimiter);
 }
@@ -59,9 +61,8 @@ char	*get_heredoc_pos(char *str)
 {
 	while (*str)
 	{
-		if (*str == '\'' || *str == '"')
-			str = skip_quotes(str);
-		if (*str == '<' && *(str + 1) == '<')
+		str = skip_quotes(str);
+		if (str[0] == '<' && str[1] == '<')
 			return (str);
 		str++;
 	}
@@ -73,10 +74,11 @@ int	exec_heredoc(char *delimiter, int *exit_status, t_env *minienv, char *input)
 	int	child_pid;
 
 	child_pid = fork();
-	define_heredoc_signals(child_pid);
 	if (child_pid == -1)
 		print_perror_msg("fork - exec_heredoc", delimiter);
-	else if (child_pid == 0)
+	else
+		define_heredoc_signals(child_pid);
+	if (child_pid == 0)
 	{
 		free(input);
 		read_heredoc(exit_status, minienv, delimiter);
@@ -102,6 +104,8 @@ int	heredoc_handler(char *input, int *exit_status, t_env *minienv)
 	*heredoc_pos = 1;
 	heredoc_pos++;
 	delimiter = get_delimiter(heredoc_pos);
+	if (!delimiter)
+		return (FAILED);
 	if (!exec_heredoc(delimiter, exit_status, minienv, input))
 	{
 		free(delimiter);

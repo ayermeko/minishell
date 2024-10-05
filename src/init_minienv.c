@@ -11,7 +11,10 @@
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
-
+/*
+HOME=
+HOME_LOCAL=
+ */
 t_env	*minienv_node(char *name, t_env *minienv)
 {
 	t_env	*current;
@@ -22,7 +25,7 @@ t_env	*minienv_node(char *name, t_env *minienv)
 	while (current)
 	{
 		if (ft_strncmp(name, current->key_pair, size) == 0
-			&& current->key_pair[size] == '=')
+			&& (current->key_pair[size] == '=' || current->key_pair[size] == 0))
 			return (current);
 		current = current->next;
 	}
@@ -33,9 +36,11 @@ char	*value_only(char *key_pair)
 {
 	char	*is_command_sign;
 
+	if (!key_pair)
+		return (NULL);
 	is_command_sign = ft_strchr(key_pair, '=');
 	if (!is_command_sign)
-		return (NULL);
+		return (ft_strchr(key_pair, 0));
 	return (is_command_sign + 1);
 }
 
@@ -52,25 +57,31 @@ char	*minienv_value(char *name, t_env *minienv)
 void	minienv_add(char *key_pair, t_env **minienv)
 {
 	t_env	*new_node;
-	t_env	*aux_node;
 
+	if (!key_pair)
+		return ;
 	new_node = malloc(sizeof(t_env));
+	if (!new_node)
+		return ;
 	new_node->key_pair = ft_strdup(key_pair);
+	if (!new_node->key_pair)
+	{
+		free(new_node);
+		return ;
+	}
 	new_node->next = NULL;
 	if (*minienv == NULL)
 	{
 		*minienv = new_node;
 		return ;
 	}
-	aux_node = *minienv;
-	ft_lstadd_back(&aux_node, new_node);
+	ft_lstadd_back(minienv, new_node);
 }
 
 t_env	*init_minienv(char **environ)
 {
 	t_env	*minienv;
 	int		i;
-	char	*home;
 
 	minienv = NULL;
 	i = 0;
@@ -78,8 +89,5 @@ t_env	*init_minienv(char **environ)
 		minienv_add(environ[i++], &minienv);
 	if (!minienv_node("OLDPWD", minienv))
 		minienv_add("OLDPWD", &minienv);
-	home = ft_strjoin("__HOME=", minienv_value("HOME", minienv));
-	minienv_add(home, &minienv);
-	free(home);
 	return (minienv);
 }

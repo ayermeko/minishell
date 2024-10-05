@@ -22,7 +22,7 @@ void	redirect_heredoc(char *command)
 		print_perror_msg("open", "/tmp/minishell_hd");
 		return ;
 	}
-	redirect_fd(tmp_file_fd, STDIN_FILENO);
+	redirect_fd(tmp_file_fd, 0);
 	delete_char(get_redirect_position(command, 1), 1);
 }
 
@@ -38,7 +38,7 @@ char	*create_keypair(char *name, char *value)
 	while (*name)
 		key_pair[i++] = *name++;
 	key_pair[i++] = '=';
-	while (*value)
+	while (value && *value)
 		key_pair[i++] = *value++;
 	key_pair[i] = '\0';
 	return (key_pair);

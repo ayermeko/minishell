@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   multiple_commands.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayermeko <ayermeko@student.42prague.com    +#+  +:+       +#+        */
+/*   By: ayermeko <ayermeko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 10:30:45 by ayermeko          #+#    #+#             */
-/*   Updated: 2024/09/29 18:39:32 by ayermeko         ###   ########.fr       */
+/*   Updated: 2024/09/28 11:04:29 by ayermeko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	*init_children_pid(char **commands)
 	size = sizeof(int) * (arr_len(commands) + 1);
 	children_pid = malloc(size);
 	if (!children_pid)
-		exit (1);
+		return (NULL);
 	ft_bzero(children_pid, size);
 	return (children_pid);
 }
@@ -63,8 +63,10 @@ int	multiple_commands(char **commands, t_env **minienv)
 
 	save_original_fds(original_fds);
 	children_pid = init_children_pid(commands);
-	i = 0;
-	while (commands[i])
+	if (!children_pid)
+		return (1);
+	i = -1;
+	while (commands[++i])
 	{
 		handle_pipe(original_fds[1], commands[i], commands);
 		children_pid[i] = fork();
@@ -77,7 +79,6 @@ int	multiple_commands(char **commands, t_env **minienv)
 			handle_child_redir(commands[i], commands, minienv);
 			execute_fork_cmd(commands[i], commands, minienv);
 		}
-		i++;
 	}
 	restore_original_fds(original_fds);
 	return (wait_for_children(children_pid));
