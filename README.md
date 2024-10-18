@@ -10,7 +10,7 @@ __Minishell__ is a my first team project in 42 that mimics the behavior of bash.
 
 ## Introduction
 
-..
+This project marked my first team collaboration at 42, where we developed a basic shell, called minishell. The primary objective was to create a simplified version of a Unix shell that could execute commands, manage processes, and handle basic input/output redirection. Working on this project allowed us to dive deep into the internal workings of a shell, and it sharpened our understanding of system calls, process control, and inter-process communication. Collaborating with my teammate was a valuable experience, as we learned to merge ideas, troubleshoot effectively, and tackle complex problems together.
 
 ## Project Requirements
 
