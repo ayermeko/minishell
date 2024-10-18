@@ -67,7 +67,7 @@ pid_t fork(void) - for creating a child process, where they have different memor
 To compile and run the minishell program, follow these steps:
 
 1. First, you need to clone the repository:
-   ```
+   ```git status
 git status
 git add
 git commit
