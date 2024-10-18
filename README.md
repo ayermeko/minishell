@@ -1,5 +1,5 @@
+![tenor (1)](https://github.com/user-attachments/assets/4f10606b-20d6-4d06-a33d-e4b2e1fc6c7f)
 
-<img src="https://media.licdn.com/dms/image/v2/D5605AQF4p3RRu85y2Q/feedshare-thumbnail_720_1280/feedshare-thumbnail_720_1280/0/1701954290874?e=2147483647&v=beta&t=KZT3ggeH_XFDeUNnvCzm9uMBCm8_GTJ9AURlmvbnKsY" alt="drawing" width="1100"/>
 
 __Minishell__ is a my first team project in 42 that mimics the behavior of bash. This project aiming to deepen your understanding of system calls, process management, and signal handling in C.
 
