@@ -7,6 +7,7 @@ __Minishell__ is a my first team project in 42 that mimics the behavior of bash.
 - [Introduction](#introduction)
 - [Project Requirements](#project-requirements)
 - [Built-in Commands](#built-in-commands)
+- [How to Run Program](#how-to-run-program)
 
 ## Introduction
 
@@ -59,4 +60,13 @@ int rl_on_new_line(void) - is used to manage the display of the command line pro
 
 int access(const char *pathname, int mode) - function is used to check the accessibility of a file (or a path) for certain types of operations. It checks whether the calling process has permission to read, write, or execute a specified file, or simply if the file exists.
 
-pid_t fork(void) - for creating a child process, where they have different memory spaces, instead of a threads. 
+pid_t fork(void) - for creating a child process, where they have different memory spaces, instead of a threads.
+
+## How to Run Program
+
+To compile and run the minishell program, follow these steps:
+
+1. First you need to copy repo
+   '''
+   git clone
+   '''
