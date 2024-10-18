@@ -63,3 +63,12 @@ int access(const char *pathname, int mode) - function is used to check the acces
 pid_t fork(void) - for creating a child process, where they have different memory spaces, instead of a threads.
 
 ## How to Run Program
+
+To compile and run the minishell program, follow these steps:
+
+1. First, you need to clone the repository:
+   ```
+git status
+git add
+git commit
+```
