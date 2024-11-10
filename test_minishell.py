@@ -27,14 +27,26 @@ class TestMiniShell(unittest.TestCase):
         expected_output = subprocess.run(['pwd'], capture_output=True, text=True).stdout.strip()
         self.assertEqual(output, expected_output, "The pwd command failed")
 
-
     def test_ls(self):
         """Test that the ls command lists the files correctly"""
         output = self.run_command('ls\n')
         expected_output = subprocess.run(['ls'], capture_output=True, text=True).stdout.strip()
         self.assertEqual(output, expected_output, "The ls command failed")
 
+    def test_pipe(self):
+        """Test piping between commands"""
+        output = self.run_command('echo Hello | grep Hello\n')
+        self.assertEqual(output, "Hello", "Piping failed to work")
 
+    def test_exit(self):
+        """Test the exit command"""
+        output = self.run_command('exit\n')
+        self.assertEqual(output, "", "The exit command did not terminate the shell properly")
+
+    def test_chained_commands(self):
+        """Test execution of multiple commands in sequence"""
+        output = self.run_command('echo First; echo Second\n')
+        self.assertEqual(output, 'First; echo Second', "Chained commands did not execute properly")
 
 if __name__ == '__main__':
     unittest.main() 
