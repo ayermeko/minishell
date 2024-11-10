@@ -34,3 +34,4 @@ class TestMiniShell(unittest.TestCase):
         self.assertEqual(output, expected_output, "The ls command failed")
 
 if __name__ == '__main__':
+    unittest.main() 
