@@ -1,3 +1,5 @@
+#!/bin/env python3
+
 import subprocess
 import unittest
 
@@ -9,9 +11,9 @@ class TestMiniShell(unittest.TestCase):
             result = subprocess.run(
                 ['./minishell'], input=command, text=True, capture_output=True, check=True
             )
-            # Split the output by newline and remove prompts and the 'exit' line
+            
             lines = result.stdout.strip().split('\n')
-            cleaned_output = '\n'.join(lines[1:-1])  # Skip the first (prompt) and last (exit)
+            cleaned_output = '\n'.join(lines[1:-1])
             return cleaned_output
         except subprocess.CalledProcessError as e:
             return e.output.strip()
@@ -27,11 +29,14 @@ class TestMiniShell(unittest.TestCase):
         expected_output = subprocess.run(['pwd'], capture_output=True, text=True).stdout.strip()
         self.assertEqual(output, expected_output, "The pwd command failed")
 
+
     def test_ls(self):
         """Test that the ls command lists the files correctly"""
         output = self.run_command('ls\n')
         expected_output = subprocess.run(['ls'], capture_output=True, text=True).stdout.strip()
         self.assertEqual(output, expected_output, "The ls command failed")
+
+
 
 if __name__ == '__main__':
     unittest.main() 

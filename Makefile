@@ -32,6 +32,9 @@ $(OBJ_DIR):
 run: $(NAME)
 	./$(NAME)
 
+test: $(NAME)
+	python3 test_minishell.py -v
+
 clean:
 	@rm -rf $(OBJ_DIR)
 	@echo removed $(OBJ_DIR) folder
@@ -43,4 +46,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all run clean fclean re
+.PHONY: all run test clean fclean re 
