@@ -48,5 +48,18 @@ class TestMiniShell(unittest.TestCase):
         output = self.run_command('echo First; echo Second\n')
         self.assertEqual(output, 'First; echo Second', "Chained commands did not execute properly")
 
+    def test_redirection_output(self):
+        """Test output redirection to a file"""
+        self.run_command('echo Hello > test_output.txt\n')
+        with open('test_output.txt', 'r') as f:
+            file_content = f.read().strip()
+        self.assertEqual(file_content, 'Hello', "Output redirection failed")
+
+    def test_invalid_command(self):
+        """Test handling of an invalid command"""
+        output = self.run_command('nonexistentcommand\n')
+        self.assertTrue('minishell: nonexistentcommand: command not found', "Invalid command handling failed")
+
+
 if __name__ == '__main__':
     unittest.main() 
