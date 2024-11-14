@@ -34,6 +34,7 @@ run: $(NAME)
 
 test: $(NAME)
 	python3 test_minishell.py -v
+# To enable a higher level of verbosity.
 
 clean:
 	@rm -rf $(OBJ_DIR)
